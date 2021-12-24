@@ -15,7 +15,8 @@ A Home Assistant frontend custom card for the [ha-nhl](https://github.com/simply
 
 #### &nbsp;&nbsp;&nbsp;POSTPONED
 
-![bye](NEED IMAGE))
+![nhl_card_postponed](https://user-images.githubusercontent.com/22181015/147341318-8afa9a7c-8f13-484d-8502-0328c262288b.jpg)
+
 
 
 ## HACS Installation
