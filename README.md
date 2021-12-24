@@ -3,7 +3,7 @@ A Home Assistant frontend custom card for the [ha-nhl](https://github.com/simply
 
 #### &nbsp;&nbsp;&nbsp;PREGAME
 
-![pregame](NEED IMAGE)
+![nhl_card_pre](https://user-images.githubusercontent.com/22181015/147371178-a3306e2a-5dff-481c-a436-93534c0eae78.jpg)
 
 #### &nbsp;&nbsp;&nbsp;IN GAME
 
