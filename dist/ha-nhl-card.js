@@ -266,46 +266,64 @@ class NHLCard extends LitElement {
         `;
     }
 
-    if (stateObj.state == 'POSTPONED') {
-      return html`
-        <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
-          .team-bg { opacity: 0.08; position: absolute; top: -30%; left: -20%; width: 58%; z-index: 0; }
-          .opponent-bg { opacity: 0.08; position: absolute; top: -30%; right: -20%; width: 58%; z-index: 0; }
-          .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
-          .team { text-align: center; width: 35%;}
-          .team img { max-width: 90px; }
-          .score { font-size: 3em; text-align: center; }
-          .teamscr { opacity: ${teamScore}; }
-          .opposcr { opacity: ${oppoScore}; }
-          .divider { font-size: 2.5em; text-align: center; opacity: 0; }
-          .name { font-size: 1.4em; margin-bottom: 4px; }
-          .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .status { font-size: 1.2em; text-align: center; margin-top: -21px; }
-        </style>
-        <ha-card>
-          <div class="card">
-            <img class="team-bg" src="${stateObj.attributes.team_logo}" />
-            <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
-            <div class="card-content">
-              <div class="team">
-                <img src="${stateObj.attributes.team_logo}" />
-                <div class="name">${stateObj.attributes.team_name}</div>
-                <div class="record">${stateObj.attributes.team_record}</div>
+    if (stateObj.state == 'PRE') {
+        return html`
+          <style>
+            .card { position: relative; overflow: hidden; padding: 0 16px 20px; font-weight: 400; }
+            .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
+            .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
+            .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
+            .team { text-align: center; width: 35%; }
+            .team img { max-width: 90px; }
+            .name { font-size: 1.4em; margin-bottom: 4px; }
+            .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
+            .gameday { font-size: 1.4em; margin-bottom: 4px; }
+            .gametime { font-size: 1.1em; }
+            .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
+            .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
+            .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
+            .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 10s linear infinite; }
+            @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+            .clock { text-align: center; font-size: 1.4em; }
+            .down-distance { text-align: right; font-weight: 700; }
+            .kickoff { text-align: center; margin-top: -24px; }
+          </style>
+          <ha-card>
+              <div class="card">
+              <img class="team-bg" src="${stateObj.attributes.team_logo}" />
+              <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
+              <div class="card-content">
+                <div class="team">
+                  <img src="${stateObj.attributes.team_logo}" />
+                  <div class="name">${stateObj.attributes.team_name}</div>
+                  <div class="record">${stateObj.attributes.team_record}</div>
+                </div>
+                <div class="gamewrapper">
+                  <div class="gameday">GAME</div>
+                  <div class="gametime">POSTPONED</div>
+                </div>
+                <div class="team">
+                  <img src="${stateObj.attributes.opponent_logo}" />
+                  <div class="name">${stateObj.attributes.opponent_name}</div>
+                  <div class="record">${stateObj.attributes.opponent_record}</div>
+                </div>
               </div>
-              <div class="score teamscr">-</div>
-              <div class="divider">-</div>
-              <div class="score opposcr">-</div>
-              <div class="team">
-                <img src="${stateObj.attributes.opponent_logo}" />
-                <div class="name">${stateObj.attributes.opponent_name}</div>
-                <div class="record">${stateObj.attributes.opponent_record}</div>
+              <div class="line"></div>
+              <div class="sub1">
+                <div class="date">Kickoff ${stateObj.attributes.kickoff_in}</div>
+                <div class="odds">${stateObj.attributes.odds}</div>
+              </div>
+              <div class="sub2">
+                <div class="venue">${stateObj.attributes.venue}</div>
+                <div class="overunder"> O/U: ${stateObj.attributes.overunder}</div>
+              </div>
+              <div class="sub3">
+                <div class="location">${stateObj.attributes.location}</div>
+                <div class="network">${stateObj.attributes.tv_network}</div>
               </div>
             </div>
-            <div class="status">GAME POSTPONED</div>
-          </div>
-        </ha-card>
-      `;
+            </ha-card>
+        `;
     }
 
     if (stateObj.state == 'unavailable') {
