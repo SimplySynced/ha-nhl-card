@@ -7,11 +7,11 @@ A Home Assistant frontend custom card for the [ha-nhl](https://github.com/simply
 
 #### &nbsp;&nbsp;&nbsp;IN GAME
 
-![ingame](NEED IMAGE)
+![nhl_card_in](https://user-images.githubusercontent.com/22181015/147807404-884aed3d-91de-4a47-a790-8fe777cab06b.jpg)
 
 #### &nbsp;&nbsp;&nbsp;POSTGAME
 
-![postgame](NEED IMAGE)
+![nhl_card_post](https://user-images.githubusercontent.com/22181015/147807415-42fdf195-a9f2-4ef8-99f8-09490170db64.jpg)
 
 #### &nbsp;&nbsp;&nbsp;POSTPONED
 
@@ -43,26 +43,6 @@ type: module
 | Name | Description | Default | Required |  Values |
 | --- | --- | --- | --- | --- |
 | `entity` | Name of ha-nhl sensor | `sensor.nhl` | Yes  | Valid sensor |
-| `outline` | Outline team colors (helpful w/ dark themes) |`false` | No |  `true` `false` |
-| `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
-
-## Examples
-```
-type: 'custom:nhl-card'
-entity: sensor.nhl
-outline: true
-outline_color: deeppink
-```
-![example](NEED IMAGE)
-
-
-```
-type: 'custom:nhl-card'
-entity: sensor.nhl
-outline: true
-outline_color: '#ffe500'
-```
-![example2](NEED IMAGE)
 
 ## Minimal Required Configuration
 ```
