@@ -68,7 +68,6 @@ class NHLCard extends LitElement {
         var teamScore = 1;
     }
 
-
     if (stateObj.attributes.team_homeaway == 'home') {
       var teamColor = stateObj.attributes.team_colors[0];
       var oppoColor = stateObj.attributes.opponent_colors[1];
@@ -76,6 +75,12 @@ class NHLCard extends LitElement {
     if (stateObj.attributes.team_homeaway == 'away') {
       var teamColor = stateObj.attributes.team_colors[1];
       var oppoColor = stateObj.attributes.opponent_colors[0];
+    }
+
+    if (stateObj.attributes.overunder == null) {
+      var overUnder = 'O/U available on gameday'
+    } else {
+      var overUnder = 'O/U: ' + stateObj.attributes.overunder
     }
 
     if (!stateObj) {
@@ -151,8 +156,8 @@ class NHLCard extends LitElement {
             .status { text-align:center; font-size:1.6em; font-weight: 700; }
             .sub1 { font-weight: 700; font-size: 1.2em; margin: 6px 0 2px; }
             .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
-            .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
-            .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 18s linear infinite; }
+            /*.last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }*/
+            /*.last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation: slide 18s linear infinite; }*/
             @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
             .clock { text-align: center; font-size: 1.4em; }
             .down-distance { text-align: right; }
@@ -177,11 +182,11 @@ class NHLCard extends LitElement {
                 <div class="name">${stateObj.attributes.team_name}</div>
                 <div class="record">${stateObj.attributes.team_record}</div>
               </div>
-              <div class="teamposs">&bull;</div>
+              <div class="teamposs"></div>
               <div class="score">${stateObj.attributes.team_score}</div>
               <div class="divider">-</div>
               <div class="score">${stateObj.attributes.opponent_score}</div>
-              <div class="oppoposs">&bull;</div>
+              <div class="oppoposs"></div>
               <div class="team">
                 <img src="${stateObj.attributes.opponent_logo}" />
                 <div class="name">${stateObj.attributes.opponent_name}</div>
@@ -192,14 +197,15 @@ class NHLCard extends LitElement {
             <div class="line"></div>
             <div class="sub2">
               <div class="venue">${stateObj.attributes.venue}</div>
+              <div class="last-play">${stateObj.attributes.last_play}</div>
             </div>
             <div class="sub3">
               <div class="location">${stateObj.attributes.location}</div>
               <div class="network">${stateObj.attributes.tv_network}</div>
             </div>
             <div class="line"></div>
-            <div class="last-play">
-              <p>${stateObj.attributes.last_play}</p>
+            <div class="box-score">
+              <p></p>
             </div>
           </div>
           </ha-card>
@@ -255,7 +261,7 @@ class NHLCard extends LitElement {
               </div>
               <div class="sub2">
                 <div class="venue">${stateObj.attributes.venue}</div>
-                <div class="overunder"> O/U: ${stateObj.attributes.overunder}</div>
+                <div class="overunder">${overUnder}</div>
               </div>
               <div class="sub3">
                 <div class="location">${stateObj.attributes.location}</div>
@@ -266,7 +272,7 @@ class NHLCard extends LitElement {
         `;
     }
 
-    if (stateObj.state == 'PRE') {
+    if (stateObj.state == 'POSTPONED') {
         return html`
           <style>
             .card { position: relative; overflow: hidden; padding: 0 16px 20px; font-weight: 400; }
@@ -307,19 +313,6 @@ class NHLCard extends LitElement {
                   <div class="name">${stateObj.attributes.opponent_name}</div>
                   <div class="record">${stateObj.attributes.opponent_record}</div>
                 </div>
-              </div>
-              <div class="line"></div>
-              <div class="sub1">
-                <div class="date">Kickoff ${stateObj.attributes.kickoff_in}</div>
-                <div class="odds">${stateObj.attributes.odds}</div>
-              </div>
-              <div class="sub2">
-                <div class="venue">${stateObj.attributes.venue}</div>
-                <div class="overunder"> O/U: ${stateObj.attributes.overunder}</div>
-              </div>
-              <div class="sub3">
-                <div class="location">${stateObj.attributes.location}</div>
-                <div class="network">${stateObj.attributes.tv_network}</div>
               </div>
             </div>
             </ha-card>

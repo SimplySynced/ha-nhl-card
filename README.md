@@ -20,20 +20,20 @@ A Home Assistant frontend custom card for the [ha-nhl](https://github.com/simply
 
 
 ## HACS Installation
- - In the HACS UI, click the 3 dots in the upper right
- - Click 'Add Custom Repository'
- - Fill in the repo url https://github.com/SimplySynced/ha-nhl-card and choose 'Lovelace' category.
- - install the custom card
- - Add the following to your resources
+- In the HACS UI, click the 3 dots in the upper right
+- Click 'Add Custom Repository'
+- Fill in the repo url https://github.com/SimplySynced/ha-nhl-card and choose 'Lovelace' category.
+- install the custom card
+- Add the following to your resources
 ```
 url: /hacsfiles/ha-nhl-card/ha-nhl-card.js
 type: module
 ```
 
 ## Manual Installation
- - Download [ha-nhl-card.js](https://raw.githubusercontent.com/SimplySynced/ha-nhl-card/main/dist/ha-nhl-card.js)
- - Copy to www/community/ha-nhl-card/ (make the ha-nhl-card directory)
- - Add the following to your resources
+- Download [ha-nhl-card.js](https://raw.githubusercontent.com/SimplySynced/ha-nhl-card/main/dist/ha-nhl-card.js)
+- Copy to www/community/ha-nhl-card/ (make the ha-nhl-card directory)
+- Add the following to your resources
 ```
 url: /hacsfiles/ha-nhl-card/ha-nhl-card.js
 type: module
